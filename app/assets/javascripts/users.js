@@ -1,7 +1,7 @@
 /* global $, Stripe */
 $(document).on('turbolinks:load', function(){
     var theForm = $('#pro_form');
-    var submitBtn = $('#form-submit-btn');
+    var submitBtn = $('#form-signup-btn');
     
     Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
     
@@ -16,17 +16,17 @@ $(document).on('turbolinks:load', function(){
         var expYear = $('#card_year').val();
         var error = false;
     
-    if(!Stripe.card.ValidateCardNumber(ccNum)){
+    if(!Stripe.card.validateCardNumber(ccNum)){
         error = true;
         alert('Invalid Credit Number');
     }
     
-    if(!Stripe.card.ValidateCVC(cvcNum)){
+    if(!Stripe.card.validateCVC(cvcNum)){
         error = true;
         alert('Invalid CVC Number');
     }
     
-    if(!Stripe.card.ValidateExpiry(expMonth, expYear)){
+    if(!Stripe.card.validateExpiry(expMonth, expYear)){
         error = true;
         alert('Invalid Expiration Date');
     }
